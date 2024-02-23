@@ -2,18 +2,19 @@
 
 using namespace std;
 
-void analyzer(string input, regex rules, string token){
+void search(string input, regex rules, string token){
   smatch matches;
-  vector<string> whatever; int ctr = 0;
+  vector<string> shiam; 
+  int ctr = 0;
   while(regex_search(input, matches, rules)){
-    whatever.push_back(matches[0]);
+    shiam.push_back(matches[0]);
     ctr++;
     input = matches.suffix().str();
   }
 
   cout<<token<<" ("<<ctr<<")\t: ";
-  for(int i=0; i<whatever.size(); i++){
-    cout<<whatever[i]<<" ";
+  for(int i=0; i<shiam.size(); i++){
+    cout<<shiam[i]<<" ";
   }
   cout<<endl;
   return;
@@ -34,12 +35,12 @@ int main(){
   cout<<endl;
   cout<<endl;
   
-  analyzer(input, keywordRegex, "Keyword");
-  analyzer(input, identifierRegex, "Identifier");
-  analyzer(input, operatorRegex, "Operator");
-  analyzer(input, constantRegex, "Constant");
-  analyzer(input, punctuationRegex, "Punctuation");
-  analyzer(input, parenthesisRegex, "Parenthesis");
+  search(input, keywordRegex, "Keyword");
+  search(input, identifierRegex, "Identifier");
+  search(input, operatorRegex, "Operator");
+  search(input, constantRegex, "Constant");
+  search(input, punctuationRegex, "Punctuation");
+  search(input, parenthesisRegex, "Parenthesis");
 
   return 0;
 }
