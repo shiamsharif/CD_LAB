@@ -5,14 +5,14 @@ using namespace std;
 void search(string input, regex rules, string token){
   smatch matches;
   vector<string> shiam; 
-  int ctr = 0;
+  int counter = 0;
   while(regex_search(input, matches, rules)){
     shiam.push_back(matches[0]);
-    ctr++;
+    counter++;
     input = matches.suffix().str();
   }
 
-  cout<<token<<" ("<<ctr<<")\t: ";
+  cout<<token<<" ("<<counter<<")\t: ";
   for(int i=0; i<shiam.size(); i++){
     cout<<shiam[i]<<" ";
   }
